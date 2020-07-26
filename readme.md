@@ -1,9 +1,9 @@
 1. Install Minikube: http://john-cd.com/cheatsheets/Containers/Minikube_Install_on_Windows/
 2. start minikube: C:\MiniKube>minikube start --driver=docker
-3. To build dockerfile: docker build -t arif/arifapp .
-    here arif/arifapp are docker image and tag is: latest.
+3. To build dockerfile: docker build -t abhishekjv/nodejs-hw .
+    here abhishekjv/nodejs-hw are docker image and tag is: latest.
 4. Run Docker image locally: docker run -p 3000:3000 IMAGE-ID
-5. (Optional) Push the image to docker hub: docker push arif/arifapp
+5. (Optional) Push the image to docker hub: docker push abhishekjv/nodejs-hw
 6. Go to http://localhost:3000 to verify the working app
 7. Create a pod in K8s: kubectl create -f pod-nodejs-docker-hw.yml
 8. To see list of pod: kubectl get pods
