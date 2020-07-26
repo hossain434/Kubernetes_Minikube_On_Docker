@@ -1,41 +1,23 @@
-**NodeJS Hello World application with Docker and Kubernetes**
-
-# Building and running Docker image
-
-## Create the docker image
-Excute the below command from the root directory to create the docker image.
-
-```
-$ docker build -t abhishekjv/nodejs-hw .
-```
-Note: With ``` -t ``` tag, I have specified the name of the image which also contains the name of my Docker hub ID. This is one of the best practice to follow when tagging images. 
-
-## Run the image to verify its working
-To run the application, execute the below command:
-```
-docker run -p 3000:3000 IMAGE-ID
-```
-
-## Push the image to docker hub
-```
-docker push abhishekjv/nodejs-hw
-```
-
-## Create a pod in Kubernetes
-```
-kubectl create -f pod-nodejs-docker-hw.yml
-```
-
-## To access the application on K8s
-```
-kubectl port-forward nodejs-docker-hw 8081:3000
-
+1. Install Minikube: http://john-cd.com/cheatsheets/Containers/Minikube_Install_on_Windows/
+2. start minikube: C:\MiniKube>minikube start --driver=docker
+3. To build dockerfile: docker build -t arif/arifapp .
+here arif/arifapp are docker image and tag is: latest.
+4. Run Docker image locally: docker run -p 3000:3000 IMAGE-ID
+5. (Optional) Push the image to docker hub: docker push arif/arifapp
+6. Go to http://localhost:3000 to verify the working app
+7. Create a pod in K8s: kubectl create -f pod-nodejs-docker-hw.yml
+8. To see list of pod: kubectl get pods
+9. To access the application on K8s: kubectl port-forward nodejs-docker-hw 8081:3000 (here the port 3000 of the container is exposed on port 8081 on the host system.)
 curl http://localhost:8081
-```
-
-## To access the application on K8s via service
-```
+10. Go to http://localhost:8081 to access the application.
+11. To access the application on K8s via service
 kubectl expose pod nodejs-docker-hw --type=NodePort --name nodejs-hw-service
 kubectl describe service nodejs-hw-service
-```
 Look for the port number defined for NodePort.
+12. Expose the pod to the public internet using the kubectl expose command:kubectl expose deployment hello-node --type=LoadBalancer --port=8080
+
+10. Reference link:https://dzone.com/articles/get-your-first-application-on-kubernetes
+11. commands:
+delete the Minikube VM:minikube delete, to stop: minikube stop, to clean up the resources you created: kubectl delete service hello-node, kubectl delete deployment hello-node, to get pod: kubectl get pod,svc -n kube-system, get services: kubectl get services.
+
+
