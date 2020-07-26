@@ -14,10 +14,9 @@ curl http://localhost:8081
 kubectl expose pod nodejs-docker-hw --type=NodePort --name nodejs-hw-service
 kubectl describe service nodejs-hw-service
 Look for the port number defined for NodePort.
-12. Expose the pod to the public internet using the kubectl expose command:kubectl expose deployment hello-node --type=LoadBalancer --port=8080
-
-10. Reference link:https://dzone.com/articles/get-your-first-application-on-kubernetes
-11. commands:
+12. (Alternate way of step 11) Expose the pod to the public internet using the kubectl expose command:kubectl expose deployment hello-node --type=LoadBalancer --port=8080
+13. commands:
 delete the Minikube VM:minikube delete, to stop: minikube stop, to clean up the resources you created: kubectl delete service hello-node, kubectl delete deployment hello-node, to get pod: kubectl get pod,svc -n kube-system, get services: kubectl get services.
+14. Reference link:https://dzone.com/articles/get-your-first-application-on-kubernetes
 
 
